@@ -15,6 +15,10 @@ const avenirNext = localFont({
       path: "../fonts/AvenirNextLTPro-Regular.otf",
       weight: "400",
     },
+    {
+      path: "../fonts/AvenirNextLTPro-Bold.otf",
+      weight: "700",
+    },
   ],
   variable: "--font-avenirNext",
 });
