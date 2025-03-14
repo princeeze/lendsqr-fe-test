@@ -1,10 +1,22 @@
 import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
+import localFont from "next/font/local";
+
 import "@/styles/globals.scss";
 
 const workSans = Work_Sans({
   variable: "--font-work-sans",
   subsets: ["latin"],
+});
+
+const avenirNext = localFont({
+  src: [
+    {
+      path: "../fonts/AvenirNextLTPro-Regular.otf",
+      weight: "400",
+    },
+  ],
+  variable: "--font-avenirNext",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${workSans.variable}`}>{children}</body>
+      <body className={`${workSans.variable} ${avenirNext.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
