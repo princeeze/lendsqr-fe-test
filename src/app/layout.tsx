@@ -5,7 +5,7 @@ import localFont from "next/font/local";
 import "@/styles/globals.scss";
 
 const workSans = Work_Sans({
-  variable: "--font-work-sans",
+  variable: "--font-workSans",
   subsets: ["latin"],
 });
 
