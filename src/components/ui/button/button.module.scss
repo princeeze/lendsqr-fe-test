@@ -1,0 +1,33 @@
+.button {
+  padding: rem(14px);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: rem(14px);
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.primary {
+  background: $accent;
+  border: none;
+  color: white;
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid $accent;
+  color: $accent;
+}
+
+.destructive {
+  background: transparent;
+  border: 1px solid $error;
+  color: $error;
+}
