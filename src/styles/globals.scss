@@ -1,7 +1,7 @@
 @use "reset";
 
 body {
-  font-family: $workSans;
+  font-family: $workSans, sans-serif;
 }
 
 // sr-only class is used to hide elements while keeping them accessible to screen readers

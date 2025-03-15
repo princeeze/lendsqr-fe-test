@@ -1,0 +1,113 @@
+.container {
+  display: flex;
+  height: 100vh;
+  font-family: $avenirNext;
+}
+
+.logo {
+  position: absolute;
+  height: rem(30px);
+  width: rem(145px);
+  margin: rem(80px) rem(72px);
+}
+
+.left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 51%;
+}
+
+.right {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 49%;
+  padding: 0 rem(100px);
+  box-shadow: 0 15px 90px rgba(0, 0, 0, 0.03);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: rem(4px);
+  margin-bottom: rem(60px);
+  width: 100%;
+
+  h1 {
+    font-weight: 700;
+    font-size: rem(40px);
+    color: $primary;
+    letter-spacing: -0.04em;
+  }
+
+  p {
+    font-size: rem(20px);
+    color: $gray;
+  }
+}
+
+.form {
+  width: 100%;
+
+  input {
+    width: 100%;
+    padding: rem(16px);
+    border-radius: 7px;
+    font-size: rem(14px);
+    border: 2px solid rgba(84, 95, 125, 0.15);
+
+    &:focus {
+      outline: rem(2px) solid $accent;
+    }
+
+    &::placeholder {
+      color: $gray;
+    }
+  }
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+  gap: rem(24px);
+  margin-bottom: rem(30px);
+}
+
+.formError {
+  margin-top: rem(4px);
+  color: $error;
+  display: block;
+  font-size: rem(14px);
+}
+
+.passwordContainer {
+  position: relative;
+}
+
+.togglePassword {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  bottom: 50%;
+  transform: translateY(50%);
+  right: rem(12px);
+  font-size: rem(12px);
+  letter-spacing: 0.1em;
+  color: $accent;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.forgotPassword {
+  font-weight: 600;
+  font-size: rem(12px);
+  letter-spacing: 0.1em;
+  color: $accent;
+  text-decoration: none;
+}
+
+.button {
+  width: 100%;
+}
