@@ -7,3 +7,8 @@ $error: #e4033b;
 // typography
 $avenirNext: var(--font-avenirNext);
 $workSans: var(--font-workSans);
+
+// functions
+@function rem($pxValue) {
+  @return calc($pxValue / 16px) * 1rem;
+}
