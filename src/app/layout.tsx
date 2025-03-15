@@ -12,11 +12,19 @@ const workSans = Work_Sans({
 const avenirNext = localFont({
   src: [
     {
-      path: "../fonts/AvenirNextLTPro-Regular.otf",
+      path: "../assets/fonts/AvenirNextCyr-Regular.woff2",
       weight: "400",
     },
     {
-      path: "../fonts/AvenirNextLTPro-Bold.otf",
+      path: "../assets/fonts/AvenirNextCyr-Medium.woff2",
+      weight: "500",
+    },
+    {
+      path: "../assets/fonts/AvenirNextCyr-Demi.woff2",
+      weight: "600",
+    },
+    {
+      path: "../assets/fonts/AvenirNextCyr-Bold.woff2",
       weight: "700",
     },
   ],
