@@ -1,0 +1,85 @@
+.navbar {
+  padding: rem(20px) rem(24px);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+}
+
+.logo {
+  height: rem(28px);
+  width: rem(132px);
+  position: relative;
+}
+
+.searchBar {
+  display: flex;
+  position: relative;
+  min-width: rem(400px);
+
+  input {
+    width: 100%;
+    padding: rem(8px) rem(18px);
+    border-radius: 7px;
+    font-size: rem(14px);
+    border: 2px solid rgba(84, 95, 125, 0.15);
+
+    &:focus {
+      outline: rem(2px) solid $accent;
+    }
+
+    &::placeholder {
+      color: $gray;
+    }
+  }
+
+  button {
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    right: 0;
+    height: 96%;
+    border-radius: 0 7px 7px 0;
+    padding: 0 rem(20px);
+  }
+}
+
+.menu {
+  color: $primary;
+  display: flex;
+  align-items: center;
+  gap: rem(40px);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: rem(10px);
+  cursor: pointer;
+  font-weight: 500;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: rem(4px);
+    color: $primary;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+.avatar {
+  position: relative;
+  height: rem(44px);
+  width: rem(44px);
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    object-fit: cover;
+  }
+}
