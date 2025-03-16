@@ -21,7 +21,7 @@ export default function DashboardLayout({
           <aside>
             <Sidebar />
           </aside>
-          <div style={{ minHeight: "300vh", padding: "40px" }}>{children}</div>
+          <div className={styles.content}>{children}</div>
         </main>
       </QueryClientProvider>
     </div>
