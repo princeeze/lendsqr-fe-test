@@ -10,9 +10,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { Button } from "@/components/ui/button/button";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [hidePassword, setHidePassword] = useState(true);
+  const router = useRouter();
 
   const {
     register,
@@ -26,7 +28,10 @@ export default function Login() {
     try {
       // Simulate API call delay
       await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log(data);
+
+      // Should include actual login logic here
+      console.log("Login data:", data);
+      router.push("/users");
     } catch (error) {
       console.error("Login error:", error);
     }
