@@ -1,0 +1,267 @@
+.container {
+  .backLink {
+    @include flex(row, flex-start, center);
+    gap: rem(8px);
+    color: $gray;
+    margin-bottom: rem(30px);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  .userDetailsHeader {
+    @include flex(row, space-between, center);
+    margin-bottom: 40px;
+
+    h2 {
+      color: $primary;
+      font-size: rem(24px);
+      font-weight: 500;
+    }
+
+    .userActions {
+      @include flex(row, flex-end, center);
+      gap: rem(20px);
+
+      button {
+        padding: rem(8px) rem(16px);
+      }
+    }
+  }
+
+  .userDetailsCard {
+    @include card;
+    margin-bottom: rem(30px);
+
+    .userBasicInfo {
+      @include flex(row, flex-start, center);
+      padding: rem(30px);
+      gap: rem(30px);
+      flex-wrap: wrap;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .userAvatar {
+        .avatarPlaceholder {
+          @include flex(row, center, center);
+          width: rem(100px);
+          height: rem(100px);
+          border-radius: 50%;
+          background-color: rgba($primary, 0.16);
+          @include flex(row, center, center);
+          color: $primary;
+        }
+      }
+
+      .userNameSection {
+        padding-right: rem(30px);
+        border-right: 1px solid $border-color;
+        min-width: rem(150px);
+
+        @media (max-width: 768px) {
+          border-right: none;
+          padding-right: 0;
+          border-bottom: 1px solid $border-color;
+          padding-bottom: rem(15px);
+          width: 100%;
+        }
+
+        h3 {
+          color: $primary;
+          font-size: rem(22px);
+          margin-bottom: rem(8px);
+          font-weight: 500;
+        }
+
+        p {
+          color: $gray;
+          font-size: rem(14px);
+        }
+      }
+
+      .userTier {
+        padding-right: rem(30px);
+        border-right: 1px solid $border-color;
+        min-width: rem(150px);
+
+        @media (max-width: 768px) {
+          border-right: none;
+          padding-right: 0;
+          border-bottom: 1px solid $border-color;
+          padding-bottom: rem(15px);
+          width: 100%;
+        }
+
+        p {
+          color: $gray;
+          font-size: rem(14px);
+          margin-bottom: rem(8px);
+          font-weight: 500;
+        }
+
+        .stars {
+          @include flex(row, flex-start, center);
+          gap: rem(4px);
+        }
+      }
+
+      .userBalance {
+        h3 {
+          color: $primary;
+          font-size: rem(22px);
+          margin-bottom: rem(8px);
+          font-weight: 500;
+        }
+
+        p {
+          color: $primary;
+          font-size: rem(12px);
+        }
+      }
+    }
+
+    .userDetailsTabs {
+      @include flex(row, flex-start, center);
+      overflow-x: auto;
+      padding: 0 rem(30px);
+
+      .tab {
+        padding: rem(20px) rem(30px);
+        color: $gray;
+        font-size: rem(16px);
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+        position: relative;
+
+        &:hover {
+          color: $accent;
+        }
+
+        &.activeTab {
+          color: $accent;
+
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: $accent;
+            animation: slideIn 0.3s ease-in-out;
+          }
+        }
+      }
+    }
+  }
+
+  .detailsContent {
+    @include card;
+    padding: rem(30px);
+    animation: fadeIn 0.3s ease-in-out;
+
+    .detailsSection {
+      margin-bottom: rem(30px);
+      padding-top: rem(30px);
+      border-top: 1px solid $border-color;
+
+      &:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      h4 {
+        color: $primary;
+        font-size: rem(16px);
+        margin-bottom: rem(20px);
+        padding-bottom: rem(10px);
+        font-weight: 500;
+      }
+
+      .detailsGrid {
+        margin-bottom: rem(30px);
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: rem(30px);
+
+        .detailItem {
+          label {
+            display: block;
+            font-size: rem(12px);
+            color: $gray;
+            text-transform: uppercase;
+            margin-bottom: rem(8px);
+          }
+
+          p {
+            font-size: rem(16px);
+            color: $gray;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Skeleton loading styles
+.skeleton {
+  .skeletonPulse {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: pulse 1.5s ease-in-out infinite;
+    border-radius: 4px;
+  }
+
+  .skeletonText {
+    height: rem(16px);
+    width: 100%;
+    margin-bottom: rem(8px);
+  }
+
+  .skeletonStar {
+    height: rem(16px);
+    width: rem(16px);
+    border-radius: 50%;
+    margin-right: rem(4px);
+  }
+}
+
+// Animations
+@keyframes pulse {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -200% 0%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(2);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
