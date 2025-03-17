@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import styles from "./sidebar.module.scss";
 import clsx from "clsx";
 
@@ -141,12 +141,13 @@ function SidebarSection({ title, items, activePath }: SidebarSectionProps) {
 // SidebarToggle Component
 interface SidebarToggleProps {
   onToggle: () => void;
+  isOpen: boolean;
 }
 
-function SidebarToggle({ onToggle }: SidebarToggleProps) {
+function SidebarToggle({ onToggle, isOpen }: SidebarToggleProps) {
   return (
     <button className={styles.toggleButton} onClick={onToggle}>
-      <Menu size={24} />
+      {isOpen ? <X size={24} /> : <Menu size={24} />}
     </button>
   );
 }
@@ -156,13 +157,33 @@ export default function Sidebar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(true);
 
+  // Initialize sidebar state based on window width
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
+
+  // Update window width on resize
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []);
+
+  // Set initial isOpen state based on window width
+  useEffect(() => {
+    setIsOpen(windowWidth > 768);
+  }, [windowWidth]);
+
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
+    console.log(isOpen);
   };
 
   return (
     <nav className={styles.container}>
-      <SidebarToggle onToggle={toggleSidebar} />
+      <SidebarToggle isOpen={isOpen} onToggle={toggleSidebar} />
       <div className={clsx(styles.sidebar, isOpen && styles.open)}>
         <button className={styles.switchOrg}>
           <Image

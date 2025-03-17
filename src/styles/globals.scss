@@ -16,3 +16,8 @@ body {
   white-space: nowrap;
   border: 0;
 }
+
+body {
+  max-width: rem(1440px);
+  margin: 0 auto;
+}

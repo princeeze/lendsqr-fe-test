@@ -8,18 +8,39 @@
   position: fixed;
   z-index: 20;
   background: white;
+  height: $topBarHeight;
 }
-
 .logo {
   height: rem(28px);
   width: rem(132px);
   position: relative;
+
+  @media screen and (max-width: 768px) {
+    margin-left: rem(40px);
+    height: rem(24px);
+    width: rem(110px);
+  }
 }
 
 .searchBar {
   display: flex;
   position: relative;
   min-width: rem(400px);
+
+  @media screen and (max-width: 1024px) {
+    min-width: rem(300px);
+  }
+
+  @media screen and (max-width: 768px) {
+    min-width: 0;
+    overflow: hidden;
+    width: rem(55px);
+    border-radius: 12px;
+  }
+
+  @media screen and (max-width: 620px) {
+    display: none;
+  }
 
   input {
     width: 100%;
@@ -53,6 +74,16 @@
   display: flex;
   align-items: center;
   gap: rem(40px);
+
+  a {
+    @media screen and (max-width: 425px) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    gap: rem(30px);
+  }
 }
 
 .profile {
@@ -84,5 +115,9 @@
 
   img {
     object-fit: cover;
+  }
+
+  @media screen and (max-width: 620) {
+    display: none;
   }
 }

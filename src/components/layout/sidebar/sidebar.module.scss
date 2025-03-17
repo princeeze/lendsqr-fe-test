@@ -11,6 +11,8 @@
   left: 0;
   top: 0;
   z-index: 100;
+  background-color: white;
+
   // Beautify scrollbar
   overflow-y: auto;
   /* Webkit browsers (Chrome, Edge, Safari) */
@@ -40,15 +42,14 @@
   scrollbar-width: thin;
   scrollbar-color: #888 #f0f0f0;
 
-  // @media (max-width: 768px) {
-  //   width: 240px;
-  //   transform: translateX(-100%);
-  //   transition: transform 0.3s ease;
+  @media (max-width: 768px) {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
 
-  //   &.open {
-  //     transform: translateX(0);
-  //   }
-  // }
+    &.open {
+      transform: translateX(0);
+    }
+  }
 }
 
 // Organization Switcher
@@ -169,7 +170,7 @@
   @media (max-width: 768px) {
     display: block;
     position: fixed;
-    top: 10px;
+    top: 16px;
     left: 10px;
     z-index: 101;
   }

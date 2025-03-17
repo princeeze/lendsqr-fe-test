@@ -11,6 +11,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button/button";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 
 export default function Login() {
   const [hidePassword, setHidePassword] = useState(true);
@@ -108,7 +109,8 @@ export default function Login() {
               variant="primary"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Submitting..." : "LOG IN"}
+              Login
+              {isSubmitting && <Loader2 className={styles.loader} />}
             </Button>
           </form>
         </section>

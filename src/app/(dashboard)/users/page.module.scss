@@ -74,11 +74,16 @@ $status-blacklisted-color: $error;
 }
 
 // Table styles
+.overflowContainer {
+  overflow-x: auto;
+}
+
 .tableContainer {
   @include card;
   margin-bottom: rem(20px);
   position: relative;
   overflow: visible;
+  min-width: rem(1000px);
 }
 
 .tableHeader {

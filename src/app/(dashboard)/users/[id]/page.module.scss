@@ -15,6 +15,12 @@
     @include flex(row, space-between, center);
     margin-bottom: 40px;
 
+    @media (max-width: 634px) {
+      gap: rem(20px);
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
     h2 {
       color: $primary;
       font-size: rem(24px);

@@ -596,109 +596,113 @@ export default function UsersPage() {
         )}
       </div>
 
-      <div className={styles.tableContainer}>
-        <div className={styles.tableHeader}>
-          <div className={styles.tableHeaderCell}>
-            <span>ORGANIZATION</span>
-            <button
-              onClick={() => setShowFilter(!showFilter)}
-              className={styles.filterButton}
-            >
-              <ListFilter size={16} />
-            </button>
-          </div>
-          <div className={styles.tableHeaderCell}>
-            <span>USERNAME</span>
-            <button
-              onClick={() => setShowFilter(!showFilter)}
-              className={styles.filterButton}
-            >
-              <ListFilter size={16} />
-            </button>
-          </div>
-          <div className={styles.tableHeaderCell}>
-            <span>EMAIL</span>
-            <button
-              onClick={() => setShowFilter(!showFilter)}
-              className={styles.filterButton}
-            >
-              <ListFilter size={16} />
-            </button>
-          </div>
-          <div className={styles.tableHeaderCell}>
-            <span>PHONE NUMBER</span>
-            <button
-              onClick={() => setShowFilter(!showFilter)}
-              className={styles.filterButton}
-            >
-              <ListFilter size={16} />
-            </button>
-          </div>
-          <div className={styles.tableHeaderCell}>
-            <span>DATE JOINED</span>
-            <button
-              onClick={() => setShowFilter(!showFilter)}
-              className={styles.filterButton}
-            >
-              <ListFilter size={16} />
-            </button>
-          </div>
-          <div className={styles.tableHeaderCell}>
-            <span>STATUS</span>
-            <button
-              onClick={() => setShowFilter(!showFilter)}
-              className={styles.filterButton}
-            >
-              <ListFilter size={16} />
-            </button>
-          </div>
-          <div className={styles.tableHeaderCell}></div>
-        </div>
-
-        {showFilter && <FilterPanel />}
-
-        <div className={styles.tableBody}>
-          {isLoadingUsers ? (
-            <>
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-              <TableRowSkeleton />
-            </>
-          ) : (
-            currentItems.map((user) => (
-              <div
-                key={user.id}
-                className={styles.tableRow}
-                onClick={() => handleViewDetails(user.id)}
+      <div className={styles.overflowContainer}>
+        <div className={styles.tableContainer}>
+          <div className={styles.tableHeader}>
+            <div className={styles.tableHeaderCell}>
+              <span>ORGANIZATION</span>
+              <button
+                onClick={() => setShowFilter(!showFilter)}
+                className={styles.filterButton}
               >
-                <div className={styles.tableCell}>{user.organization}</div>
-                <div className={styles.tableCell}>{user.username}</div>
-                <div className={styles.tableCell}>{user.email}</div>
-                <div className={styles.tableCell}>{user.phoneNumber}</div>
-                <div className={styles.tableCell}>{user.dateJoined}</div>
-                <div className={styles.tableCell}>
-                  {renderStatusBadge(user.status)}
-                </div>
-                <div className={styles.tableCell}>
-                  <button
-                    className={styles.actionButton}
-                    onClick={(e) => toggleActionMenu(user.id, e)}
-                  >
-                    <MoreVertical size={16} />
-                  </button>
-                  {actionMenuId === user.id && <ActionMenu userId={user.id} />}
-                </div>
-              </div>
-            ))
-          )}
-
-          {!isLoadingUsers && currentItems.length === 0 && (
-            <div className={styles.noResults}>
-              No users found matching your filters.
+                <ListFilter size={16} />
+              </button>
             </div>
-          )}
+            <div className={styles.tableHeaderCell}>
+              <span>USERNAME</span>
+              <button
+                onClick={() => setShowFilter(!showFilter)}
+                className={styles.filterButton}
+              >
+                <ListFilter size={16} />
+              </button>
+            </div>
+            <div className={styles.tableHeaderCell}>
+              <span>EMAIL</span>
+              <button
+                onClick={() => setShowFilter(!showFilter)}
+                className={styles.filterButton}
+              >
+                <ListFilter size={16} />
+              </button>
+            </div>
+            <div className={styles.tableHeaderCell}>
+              <span>PHONE NUMBER</span>
+              <button
+                onClick={() => setShowFilter(!showFilter)}
+                className={styles.filterButton}
+              >
+                <ListFilter size={16} />
+              </button>
+            </div>
+            <div className={styles.tableHeaderCell}>
+              <span>DATE JOINED</span>
+              <button
+                onClick={() => setShowFilter(!showFilter)}
+                className={styles.filterButton}
+              >
+                <ListFilter size={16} />
+              </button>
+            </div>
+            <div className={styles.tableHeaderCell}>
+              <span>STATUS</span>
+              <button
+                onClick={() => setShowFilter(!showFilter)}
+                className={styles.filterButton}
+              >
+                <ListFilter size={16} />
+              </button>
+            </div>
+            <div className={styles.tableHeaderCell}></div>
+          </div>
+
+          {showFilter && <FilterPanel />}
+
+          <div className={styles.tableBody}>
+            {isLoadingUsers ? (
+              <>
+                <TableRowSkeleton />
+                <TableRowSkeleton />
+                <TableRowSkeleton />
+                <TableRowSkeleton />
+                <TableRowSkeleton />
+              </>
+            ) : (
+              currentItems.map((user) => (
+                <div
+                  key={user.id}
+                  className={styles.tableRow}
+                  onClick={() => handleViewDetails(user.id)}
+                >
+                  <div className={styles.tableCell}>{user.organization}</div>
+                  <div className={styles.tableCell}>{user.username}</div>
+                  <div className={styles.tableCell}>{user.email}</div>
+                  <div className={styles.tableCell}>{user.phoneNumber}</div>
+                  <div className={styles.tableCell}>{user.dateJoined}</div>
+                  <div className={styles.tableCell}>
+                    {renderStatusBadge(user.status)}
+                  </div>
+                  <div className={styles.tableCell}>
+                    <button
+                      className={styles.actionButton}
+                      onClick={(e) => toggleActionMenu(user.id, e)}
+                    >
+                      <MoreVertical size={16} />
+                    </button>
+                    {actionMenuId === user.id && (
+                      <ActionMenu userId={user.id} />
+                    )}
+                  </div>
+                </div>
+              ))
+            )}
+
+            {!isLoadingUsers && currentItems.length === 0 && (
+              <div className={styles.noResults}>
+                No users found matching your filters.
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
