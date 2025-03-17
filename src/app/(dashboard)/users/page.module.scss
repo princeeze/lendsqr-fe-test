@@ -1,0 +1,376 @@
+// Variables
+$border-color: #e5e5e5;
+$status-active-bg: #f3fcf6;
+$status-active-color: #39cd62;
+$status-inactive-bg: #f5f5f7;
+$status-inactive-color: $gray;
+$status-pending-bg: #fdf7e5;
+$status-pending-color: #e9b200;
+$status-blacklisted-bg: #fce6eb;
+$status-blacklisted-color: $error;
+
+@mixin card {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+@mixin columnWidths {
+  gap: rem(8px);
+
+  //Action column
+  &:last-child {
+    flex: 0 0 rem(50px);
+  }
+
+  //Status Column
+  &:nth-last-child(2) {
+    flex: 0 0 rem(90px);
+  }
+
+  // Number column
+  &:nth-last-child(4) {
+    flex: 0 0 rem(130px);
+  }
+}
+// Users List View
+.container {
+  h1 {
+    color: $primary;
+    font-size: rem(24px);
+    margin-bottom: rem(40px);
+    font-weight: 500;
+  }
+}
+
+// Stats Cards
+.statsContainer {
+  @include flex(row, space-between, stretch);
+  gap: rem(20px);
+  margin-bottom: rem(40px);
+  flex-wrap: wrap;
+}
+
+.statsCard {
+  @include card;
+  padding: rem(24px);
+  flex: 1;
+  min-width: rem(220px);
+
+  .statsIcon {
+    width: rem(40px);
+    height: rem(40px);
+    border-radius: 50%;
+    @include flex(row, center, center);
+    margin-bottom: rem(14px);
+  }
+
+  .statsTitle {
+    font-size: rem(14px);
+    text-transform: uppercase;
+    color: $gray;
+    font-weight: 500;
+    margin-bottom: rem(12px);
+  }
+
+  .statsCount {
+    font-size: rem(24px);
+    font-weight: 600;
+    color: $primary;
+  }
+}
+
+// Table styles
+.tableContainer {
+  @include card;
+  margin-bottom: rem(20px);
+  position: relative;
+  overflow: visible;
+}
+
+.tableHeader {
+  @include flex(row, space-between, center);
+  padding: rem(24px);
+  gap: rem(8px);
+  border-bottom: 1px solid $border-color;
+}
+
+.tableHeaderCell {
+  @include flex(row, flex-start, center);
+  font-size: rem(12px);
+  font-weight: 600;
+  color: $gray;
+  text-transform: uppercase;
+  flex: 1;
+
+  @include columnWidths();
+
+  .filterButton {
+    margin-left: rem(5px);
+    color: $gray;
+  }
+}
+
+.tableBody {
+  .tableRow {
+    @include flex(row, space-between, center);
+    padding: rem(16px) rem(24px);
+    border-bottom: 1px solid $border-color;
+    gap: rem(8px);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: rgba($gray, 0.05);
+    }
+  }
+
+  .tableCell {
+    font-size: rem(14px);
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include columnWidths();
+  }
+}
+
+// Status badges
+.statusBadge {
+  display: inline-block;
+  padding: rem(7px) rem(12px);
+  border-radius: 100px;
+  font-size: rem(12px);
+}
+
+.statusActive {
+  background-color: $status-active-bg;
+  color: $status-active-color;
+}
+
+.statusInactive {
+  background-color: $status-inactive-bg;
+  color: $status-inactive-color;
+}
+
+.statusPending {
+  background-color: $status-pending-bg;
+  color: $status-pending-color;
+}
+
+.statusBlacklisted {
+  background-color: $status-blacklisted-bg;
+  color: $status-blacklisted-color;
+}
+
+// Action button and menu
+.actionButton {
+  color: $gray;
+  transition: color 0.2s ease;
+  padding: 8px;
+  border-radius: 100px;
+  &:hover {
+    background-color: rgba($gray, 0.05);
+  }
+}
+
+.actionMenu {
+  position: absolute;
+  right: rem(20px);
+  background-color: white;
+  border-radius: 4px;
+  padding: rem(4px) 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  width: rem(200px);
+
+  .actionItem {
+    @include flex(row, flex-start, center);
+    gap: rem(10px);
+    color: $gray;
+    padding: rem(8px) rem(16px);
+    border-radius: 8px;
+    font-size: rem(14px);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba($gray, 0.05);
+    }
+  }
+}
+
+// Pagination
+.pagination {
+  @include flex(row, space-between, center);
+  margin-top: rem(20px);
+  font-size: rem(14px);
+}
+
+.paginationInfo {
+  @include flex(row, flex-start, center);
+  gap: rem(10px);
+
+  .pageSize {
+    padding: rem(7px) rem(12px);
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    background-color: transparent;
+  }
+}
+
+.paginationControls {
+  @include flex(row, flex-end, center);
+  gap: rem(10px);
+
+  .paginationButton {
+    width: rem(24px);
+    height: rem(24px);
+    @include flex(row, center, center);
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+
+    &:hover:not(.active) {
+      border-color: $accent;
+      color: $accent;
+    }
+
+    &.active {
+      background-color: $accent;
+      color: white;
+      border-color: $accent;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Filter Panel
+.filterPanel {
+  position: absolute;
+  top: rem(70px);
+  left: 0;
+  width: rem(270px);
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  padding: rem(20px);
+
+  .filterGroup {
+    margin-bottom: rem(20px);
+
+    label {
+      display: block;
+      font-size: rem(14px);
+      margin-bottom: rem(6px);
+      color: $gray;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: rem(10px);
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      font-size: rem(14px);
+      color: $gray;
+      transition: border-color 0.2s ease;
+
+      &:focus {
+        outline: none;
+        border-color: $accent;
+      }
+    }
+
+    .dateInput {
+      position: relative;
+
+      .calendarIcon {
+        position: absolute;
+        right: rem(10px);
+        top: 50%;
+        transform: translateY(-50%);
+        color: $gray;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .filterActions {
+    @include flex(row, space-between, center);
+    margin-top: 30px;
+
+    button {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .resetBtn {
+      background-color: transparent;
+      border: 1px solid $gray;
+      color: $gray;
+
+      &:hover {
+        background-color: rgba($gray, 0.05);
+      }
+    }
+
+    .filterBtn {
+      background-color: $accent;
+      border: none;
+      color: white;
+
+      &:hover {
+        background-color: rgba($accent, 0.05);
+      }
+    }
+  }
+}
+
+// No results message
+.noResults {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 16px;
+  color: $gray;
+}
+
+// Skeleton loading styles
+.skeleton {
+  .skeletonPulse {
+    display: inline-block;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: pulse 1.5s ease-in-out infinite;
+    border-radius: 100px;
+  }
+
+  .skeletonText {
+    height: 16px;
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -200% 0%;
+  }
+}
