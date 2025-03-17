@@ -4,6 +4,7 @@ $accent: #39cdcc;
 $gray: #545f7d;
 $error: #e4033b;
 $background: #fbfbfb;
+$border-color: #e5e5e5;
 
 // typography
 $avenirNext: var(--font-avenirNext);
@@ -24,4 +25,10 @@ $sidebarWidth: rem(280px);
   flex-direction: $direction;
   justify-content: $justify;
   align-items: $align;
+}
+
+@mixin card {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
 }
