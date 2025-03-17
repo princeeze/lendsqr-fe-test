@@ -10,8 +10,8 @@ import {
   ListFilter,
   MoreVertical,
   Eye,
-  UserX,
-  UserCheck,
+  UserRoundX,
+  UserRoundCheck,
   Calendar,
 } from "lucide-react";
 import Image from "next/image";
@@ -266,12 +266,7 @@ export default function UsersPage() {
   }) => (
     <div className={styles.statsCard}>
       <div className={styles.statsIcon} style={{ backgroundColor: color }}>
-        <Image
-          src={`/sidebar-icons/${icon}`}
-          alt={title}
-          width={20}
-          height={20}
-        />
+        <Image src={`/user-icons/${icon}`} alt={title} width={20} height={20} />
       </div>
       <div className={styles.statsTitle}>{title}</div>
       <div className={styles.statsCount}>{count}</div>
@@ -444,11 +439,11 @@ export default function UsersPage() {
         <span>View Details</span>
       </div>
       <div className={styles.actionItem}>
-        <UserX size={16} />
+        <UserRoundX size={16} />
         <span>Blacklist User</span>
       </div>
       <div className={styles.actionItem}>
-        <UserCheck size={16} />
+        <UserRoundCheck size={16} />
         <span>Activate User</span>
       </div>
     </div>
@@ -576,25 +571,25 @@ export default function UsersPage() {
             <StatsCard
               title="Users"
               count={stats?.all ?? 0}
-              icon="users.svg"
+              icon="u-all.svg"
               color="#FCE8FF"
             />
             <StatsCard
               title="Active Users"
               count={stats?.active ?? 0}
-              icon="users.svg"
+              icon="u-active.svg"
               color="#EEE8FF"
             />
             <StatsCard
               title="Users with loans"
               count={stats?.loans ?? 0}
-              icon="users.svg"
+              icon="u-loans.svg"
               color="#FEEFEC"
             />
             <StatsCard
               title="Users with savings"
               count={stats?.savings ?? 0}
-              icon="users.svg"
+              icon="u-savings.svg"
               color="#FFEBF0"
             />
           </>
