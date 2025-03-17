@@ -51,9 +51,10 @@ interface Guarantor {
 }
 
 // Mock API function to fetch user details
-const fetchUserDetails = async (userId: string): Promise<UserDetails> => {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+const fetchUserDetails = async (
+  userId: string
+): Promise<UserDetails | undefined> => {
+  //id is not being used here, but in a real world scenario, it would be used to fetch the user details
 
   // Check if data exists in localStorage
   const cachedData = localStorage.getItem(`userDetails-${userId}`);
@@ -61,55 +62,27 @@ const fetchUserDetails = async (userId: string): Promise<UserDetails> => {
     return JSON.parse(cachedData);
   }
 
-  // Mock user details data
-  const userDetails = {
-    id: Number.parseInt(userId),
-    fullName: "Grace Effiom",
-    userId: "LSQFf587g90",
-    tier: 1,
-    balance: "N200,000.00",
-    bankName: "9912345678/Providus Bank",
-    phoneNumber: "07060780922",
-    email: "grace@gmail.com",
-    bvn: "07060780922",
-    gender: "Female",
-    maritalStatus: "Single",
-    children: "None",
-    typeOfResidence: "Parent's Apartment",
-    education: {
-      level: "B.Sc",
-      employmentStatus: "Employed",
-      sector: "FinTech",
-      duration: "2 years",
-      officeEmail: "grace@lendsqr.com",
-      monthlyIncome: "N200,000.00- N400,000.00",
-      loanRepayment: "40,000",
-    },
-    socials: {
-      twitter: "@grace_effiom",
-      facebook: "Grace Effiom",
-      instagram: "@grace_effiom",
-    },
-    guarantor: [
-      {
-        fullName: "Debby Ogana",
-        phoneNumber: "07060780922",
-        email: "debby@gmail.com",
-        relationship: "Sister",
-      },
-      {
-        fullName: "Debby Ogana",
-        phoneNumber: "07060780922",
-        email: "debby@gmail.com",
-        relationship: "Sister",
-      },
-    ],
-  };
+  // Mock data for users
+  try {
+    const response = await fetch(
+      "https://run.mocky.io/v3/2aaa5e37-f697-4b23-859c-720fd9002a74"
+    );
 
-  // Store in localStorage
-  localStorage.setItem(`userDetails-${userId}`, JSON.stringify(userDetails));
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-  return userDetails;
+    const userDetails = await response.json();
+
+    localStorage.setItem(`userDetails-${userId}`, JSON.stringify(userDetails));
+
+    return userDetails;
+  } catch (error) {
+    console.error("Failed to fetch users:", error);
+    if (error instanceof Error) {
+      console.error("Error details:", error.message);
+    }
+  }
 };
 
 export default function UserDetailsPage({

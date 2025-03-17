@@ -37,9 +37,6 @@ type UserStats = {
 
 // Mock API functions
 const fetchUsers = async (): Promise<UserData[]> => {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 1500));
-
   // Check if data exists in localStorage
   const cachedData = localStorage.getItem("usersData");
   if (cachedData) {
@@ -47,145 +44,58 @@ const fetchUsers = async (): Promise<UserData[]> => {
   }
 
   // Mock data for users
-  const usersData = [
-    {
-      id: 1,
-      organization: "Lendsqr",
-      username: "Adedeji",
-      email: "adedeji@lendsqr.com",
-      phoneNumber: "08078903721",
-      dateJoined: "May 15, 2020 10:00 AM",
-      status: "Inactive",
-    },
-    {
-      id: 2,
-      organization: "Irorun",
-      username: "Debby Ogana",
-      email: "debby2@irorun.com",
-      phoneNumber: "08160780928",
-      dateJoined: "Apr 30, 2020 10:00 AM",
-      status: "Pending",
-    },
-    {
-      id: 3,
-      organization: "Lendstar",
-      username: "Grace Effiom",
-      email: "grace@lendstar.com",
-      phoneNumber: "07060780922",
-      dateJoined: "Apr 30, 2020 10:00 AM",
-      status: "Blacklisted",
-    },
-    {
-      id: 4,
-      organization: "Lendsqr",
-      username: "Tosin Dokunmu",
-      email: "tosin@lendsqr.com",
-      phoneNumber: "07003309226",
-      dateJoined: "Apr 10, 2020 10:00 AM",
-      status: "Pending",
-    },
-    {
-      id: 5,
-      organization: "Lendstar",
-      username: "Grace Effiom",
-      email: "grace@lendstar.com",
-      phoneNumber: "07060780922",
-      dateJoined: "Apr 30, 2020 10:00 AM",
-      status: "Active",
-    },
-    {
-      id: 6,
-      organization: "Lendsqr",
-      username: "Tosin Dokunmu",
-      email: "tosin@lendsqr.com",
-      phoneNumber: "08060780900",
-      dateJoined: "Apr 10, 2020 10:00 AM",
-      status: "Active",
-    },
-    {
-      id: 7,
-      organization: "Lendstar",
-      username: "Grace Effiom",
-      email: "grace@lendstar.com",
-      phoneNumber: "07060780922",
-      dateJoined: "Apr 30, 2020 10:00 AM",
-      status: "Blacklisted",
-    },
-    {
-      id: 8,
-      organization: "Lendsqr",
-      username: "Tosin Dokunmu",
-      email: "tosin@lendsqr.com",
-      phoneNumber: "08060780900",
-      dateJoined: "Apr 10, 2020 10:00 AM",
-      status: "Inactive",
-    },
-    {
-      id: 9,
-      organization: "Lendstar",
-      username: "Grace Effiom",
-      email: "grace@lendstar.com",
-      phoneNumber: "07060780922",
-      dateJoined: "Apr 30, 2020 10:00 AM",
-      status: "Inactive",
-    },
-    {
-      id: 10,
-      organization: "Lendsqr",
-      username: "John Smith",
-      email: "john@lendsqr.com",
-      phoneNumber: "08060780901",
-      dateJoined: "Jun 10, 2020 10:00 AM",
-      status: "Active",
-    },
-    {
-      id: 11,
-      organization: "Irorun",
-      username: "Sarah Johnson",
-      email: "sarah@irorun.com",
-      phoneNumber: "08160780929",
-      dateJoined: "Jun 15, 2020 10:00 AM",
-      status: "Pending",
-    },
-    {
-      id: 12,
-      organization: "Lendstar",
-      username: "Michael Brown",
-      email: "michael@lendstar.com",
-      phoneNumber: "07060780923",
-      dateJoined: "Jun 20, 2020 10:00 AM",
-      status: "Active",
-    },
-  ];
+  try {
+    const response = await fetch(
+      "https://run.mocky.io/v3/5bbdfd6b-9868-47bb-8503-cd479e06ebb7"
+    );
 
-  // Store in localStorage
-  localStorage.setItem("usersData", JSON.stringify(usersData));
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-  return usersData;
+    const usersData = await response.json();
+
+    localStorage.setItem("usersData", JSON.stringify(usersData));
+
+    return usersData;
+  } catch (error) {
+    console.error("Failed to fetch users:", error);
+    if (error instanceof Error) {
+      console.error("Error details:", error.message);
+    }
+    return []; // Return empty array in case of error
+  }
 };
 
 const fetchStats = async (): Promise<UserStats> => {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
   // Check if data exists in localStorage
   const cachedStats = localStorage.getItem("statsData");
   if (cachedStats) {
     return JSON.parse(cachedStats);
   }
 
-  // Mock stats data
-  const userStatsData = {
-    all: 2453,
-    active: 2453,
-    loans: 12453,
-    savings: 102453,
-  };
+  // Mock data for users
+  try {
+    const response = await fetch(
+      "https://run.mocky.io/v3/4cfb26c6-49c6-40f1-b6ae-83b140534e46"
+    );
 
-  // Store in localStorage
-  localStorage.setItem("statsData", JSON.stringify(userStatsData));
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-  return userStatsData;
+    const usersStatsData = await response.json();
+
+    localStorage.setItem("statsData", JSON.stringify(usersStatsData));
+
+    return usersStatsData;
+  } catch (error) {
+    console.error("Failed to fetch users:", error);
+    if (error instanceof Error) {
+      console.error("Error details:", error.message);
+    }
+    return { all: 0, active: 0, loans: 0, savings: 0 };
+  }
 };
 
 // Filter form type
