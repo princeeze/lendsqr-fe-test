@@ -186,6 +186,7 @@ export default function Sidebar() {
               <Image
                 src="/sidebar-icons/dashboard.svg"
                 alt="Dashboard"
+                className={styles.icon}
                 width={18}
                 height={18}
               />
