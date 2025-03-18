@@ -8,7 +8,7 @@ import styles from "./page.module.scss";
 import { Star, MoveLeft, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button/button";
 
-interface UserDetails {
+export interface UserDetails {
   id: number;
   fullName: string;
   userId: string;
@@ -88,7 +88,7 @@ const fetchUserDetails = async (
 export default function UserDetailsPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }) {
   const [id, setId] = useState<string>("");
 
@@ -120,7 +120,10 @@ export default function UserDetailsPage({
 
   // Skeleton components
   const UserInfoSkeleton = () => (
-    <div className={clsx(styles.userBasicInfo, styles.skeleton)}>
+    <div
+      data-testid="loading-skeleton"
+      className={clsx(styles.userBasicInfo, styles.skeleton)}
+    >
       <div className={styles.userAvatar}>
         <div
           className={clsx(styles.avatarPlaceholder, styles.skeletonPulse)}
@@ -208,6 +211,7 @@ export default function UserDetailsPage({
                   {[1, 2, 3].map((starNumber) => (
                     <Star
                       key={starNumber}
+                      data-testid="star"
                       size={16}
                       fill={
                         starNumber <= (user?.tier ?? 0) ? "#E9B200" : "none"

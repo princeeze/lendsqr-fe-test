@@ -275,7 +275,10 @@ export default function UsersPage() {
 
   // Stats Card Skeleton
   const StatsCardSkeleton = () => (
-    <div className={clsx(styles.statsCard, styles.skeleton)}>
+    <div
+      data-testid="loading-skeleton"
+      className={clsx(styles.statsCard, styles.skeleton)}
+    >
       <div className={clsx(styles.statsIcon, styles.skeletonPulse)}></div>
       <div
         className={clsx(
@@ -296,7 +299,10 @@ export default function UsersPage() {
 
   // Table Row Skeleton
   const TableRowSkeleton = () => (
-    <div className={clsx(styles.tableRow, styles.skeleton)}>
+    <div
+      data-testid="loading-skeleton"
+      className={clsx(styles.tableRow, styles.skeleton)}
+    >
       <div
         className={clsx(
           styles.tableCell,
@@ -671,6 +677,7 @@ export default function UsersPage() {
               currentItems.map((user) => (
                 <div
                   key={user.id}
+                  role="row"
                   className={styles.tableRow}
                   onClick={() => handleViewDetails(user.id)}
                 >
