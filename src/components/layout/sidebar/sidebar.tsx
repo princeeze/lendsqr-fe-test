@@ -178,7 +178,6 @@ export default function Sidebar() {
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen);
   };
 
   return (
