@@ -61,6 +61,7 @@ describe("UserDetailsPage", () => {
       isLoading: true,
     });
 
+    // id has a type error here, it should be a promise of a string
     render(<UserDetailsPage params={{ id: "1" }} />);
 
     // Check if loading skeleton is rendered

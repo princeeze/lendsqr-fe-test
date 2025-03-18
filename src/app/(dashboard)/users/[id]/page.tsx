@@ -88,7 +88,7 @@ const fetchUserDetails = async (
 export default function UserDetailsPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const [id, setId] = useState<string>("");
 
