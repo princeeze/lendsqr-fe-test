@@ -13,6 +13,8 @@ import {
   UserRoundX,
   UserRoundCheck,
   Calendar,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -465,11 +467,11 @@ export default function UsersPage() {
     buttons.push(
       <button
         key="prev"
-        className={styles.paginationButton}
+        className={clsx(styles.paginationButton, styles.action)}
         onClick={() => currentPage > 1 && paginate(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        &lt;
+        <ChevronLeft size={20} strokeWidth={2.5} />
       </button>
     );
 
@@ -494,7 +496,7 @@ export default function UsersPage() {
 
       // Pages around current page
       const startPage = Math.max(2, currentPage - 1);
-      const endPage = Math.min(totalPages - 1, currentPage + 1);
+      const endPage = Math.min(totalPages - 1, currentPage + 2);
 
       for (let i = startPage; i <= endPage; i++) {
         buttons.push(
@@ -549,11 +551,11 @@ export default function UsersPage() {
     buttons.push(
       <button
         key="next"
-        className={styles.paginationButton}
+        className={clsx(styles.paginationButton, styles.action)}
         onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        &gt;
+        <ChevronRight size={20} strokeWidth={2.5} />
       </button>
     );
 
