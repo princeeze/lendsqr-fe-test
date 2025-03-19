@@ -18,7 +18,7 @@ $workSans: var(--font-workSans);
 // layout
 $topBarHeight: rem(75px);
 $sidebarWidth: rem(280px);
-$maxWidth: rem(2000px);
+$maxWidth: rem(2560px);
 
 // mixins
 @mixin flex($direction: row, $justify: flex-start, $align: center) {
@@ -32,4 +32,5 @@ $maxWidth: rem(2000px);
   background-color: white;
   border-radius: 4px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(33, 63, 125, 0.06);
 }
