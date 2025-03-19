@@ -46,7 +46,7 @@ const fetchUsers = async (): Promise<UserData[]> => {
   // Mock data for users
   try {
     const response = await fetch(
-      "https://run.mocky.io/v3/5bbdfd6b-9868-47bb-8503-cd479e06ebb7"
+      "https://mock.apidog.com/m1/846624-826771-default/users"
     );
 
     if (!response.ok) {
@@ -77,7 +77,7 @@ const fetchStats = async (): Promise<UserStats> => {
   // Mock data for users
   try {
     const response = await fetch(
-      "https://run.mocky.io/v3/4cfb26c6-49c6-40f1-b6ae-83b140534e46"
+      "https://mock.apidog.com/m1/846624-826771-default/stats"
     );
 
     if (!response.ok) {

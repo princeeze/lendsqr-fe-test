@@ -65,7 +65,7 @@ const fetchUserDetails = async (
   // Mock data for users
   try {
     const response = await fetch(
-      "https://run.mocky.io/v3/2aaa5e37-f697-4b23-859c-720fd9002a74"
+      "https://mock.apidog.com/m1/846624-826771-default/details"
     );
 
     if (!response.ok) {
