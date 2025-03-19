@@ -9,6 +9,8 @@
   z-index: 20;
   background: white;
   height: $topBarHeight;
+  max-width: $maxWidth;
+  margin: 0 auto;
 }
 .logo {
   height: rem(28px);

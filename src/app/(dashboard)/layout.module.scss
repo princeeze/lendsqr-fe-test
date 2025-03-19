@@ -1,7 +1,7 @@
 .main {
   padding-top: $topBarHeight;
   padding-left: $sidebarWidth;
-
+  position: relative;
   @media (max-width: 768px) {
     padding-left: 0;
   }
@@ -13,6 +13,10 @@
 
   @media (max-width: 768px) {
     padding: rem(40px);
+  }
+
+  @media (max-width: 600px) {
+    padding: rem(32px);
   }
 
   @media (max-width: 425px) {
