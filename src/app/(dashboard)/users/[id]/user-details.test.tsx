@@ -3,6 +3,7 @@ import "@testing-library/jest-dom";
 import UserDetailsPage, { UserDetails } from "./page";
 import { useQuery } from "@tanstack/react-query";
 
+const params = Promise.resolve({ id: "1" });
 // Mock next/navigation
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -61,8 +62,7 @@ describe("UserDetailsPage", () => {
       isLoading: true,
     });
 
-    // id has a type error here, it should be a promise of a string
-    render(<UserDetailsPage params={{ id: "1" }} />);
+    render(<UserDetailsPage params={params} />);
 
     // Check if loading skeleton is rendered
     expect(screen.getByTestId("loading-skeleton")).toBeInTheDocument();
@@ -75,7 +75,7 @@ describe("UserDetailsPage", () => {
       isLoading: false,
     });
 
-    render(<UserDetailsPage params={{ id: "1" }} />);
+    render(<UserDetailsPage params={params} />);
 
     // Wait for the component to update
     await waitFor(() => {
@@ -97,7 +97,7 @@ describe("UserDetailsPage", () => {
       isLoading: false,
     });
 
-    render(<UserDetailsPage params={{ id: "1" }} />);
+    render(<UserDetailsPage params={params} />);
 
     // Initially, General Details should be the active tab
     const generalDetailsTab = screen.getByText("General Details");
@@ -120,7 +120,7 @@ describe("UserDetailsPage", () => {
       isLoading: false,
     });
 
-    render(<UserDetailsPage params={{ id: "1" }} />);
+    render(<UserDetailsPage params={params} />);
 
     // Get all star icons (assuming they have a test id or can be selected somehow)
     const stars = screen.getAllByTestId
@@ -137,7 +137,7 @@ describe("UserDetailsPage", () => {
       isLoading: false,
     });
 
-    render(<UserDetailsPage params={{ id: "1" }} />);
+    render(<UserDetailsPage params={params} />);
 
     // Wait for the component to update
     await waitFor(() => {
@@ -163,7 +163,7 @@ describe("UserDetailsPage", () => {
       isLoading: false,
     });
 
-    render(<UserDetailsPage params={{ id: "1" }} />);
+    render(<UserDetailsPage params={params} />);
 
     // Wait for the component to update
     await waitFor(() => {
@@ -184,7 +184,7 @@ describe("UserDetailsPage", () => {
       isError: true,
     });
 
-    render(<UserDetailsPage params={{ id: "1" }} />);
+    render(<UserDetailsPage params={params} />);
 
     // Wait for the component to update
     await waitFor(() => {
@@ -201,7 +201,7 @@ describe("UserDetailsPage", () => {
     });
 
     // Render with invalid params
-    render(<UserDetailsPage params={{ id: "invalid-id" }} />);
+    render(<UserDetailsPage params={Promise.resolve({ id: "invalid-id" })} />);
 
     // Component should render without crashing
     expect(screen.getByText("User Details")).toBeInTheDocument();
