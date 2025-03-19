@@ -1,36 +1,75 @@
+# Lendsqr Frontend Test
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Architecture
 
-First, run the development server:
+- **Next.js 15** with App Router
+- **React 19**
+- **TypeScript**
+- **SCSS** for styling
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Key Dependencies
+
+- `@tanstack/react-query` for data fetching and caching
+- `react-hook-form` with `zod` for form handling
+- `clsx` for conditional class names
+- `lucide-react` for icons
+
+## Features
+
+- Loading states with skeletons
+- Local storage caching of user data
+- Responsive design
+
+## Configuration
+
+- **SCSS Variables**: Imported globally via `next.config.ts` using `additionalData` option
+
+```ts
+const nextConfig = {
+  sassOptions: {
+    additionalData: `@use "@/styles/_variables.scss" as *;`,
+  },
+};
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **CSS Modules**: SCSS for component styling
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/princeeze/lendsqr-fe-test
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Run the development server:
+
+   ```bash
+   pnpm dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Testing Approach
+
+- **Jest & React Testing Library** for component tests
+- **Coverage reports** enabled
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about Next.js, check out:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs) - Official documentation.
+- [Learn Next.js](https://nextjs.org/learn) - Interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deployed on vercel at https://prince-eze-lendsqr-fe-test.vercel.app/
